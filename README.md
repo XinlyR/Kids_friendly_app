@@ -59,6 +59,9 @@ Future Improvements
 -Incorporate additional NLP techniques to improve the predictive model.
 -Add more features, such as user feedback, to improve recommendation accuracy.
 
+Kid's Friendly App:
+https://kidsfriendlyapp.streamlit.app/
+
 Contributing
 
 If you would like to contribute, please submit a pull request or open an issue for any improvements, bug fixes, or feature requests.
