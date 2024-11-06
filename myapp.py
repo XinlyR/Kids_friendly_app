@@ -1,30 +1,6 @@
 import streamlit as st 
 import nltk
 import os
-nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")
-os.makedirs(nltk_data_dir, exist_ok=True) 
-nltk.data.path.append(nltk_data_dir)
-
-# Attempt to download each required resource individually
-try:
-    nltk.data.find("tokenizers/punkt")
-except LookupError:
-    nltk.download("punkt", download_dir=nltk_data_dir)
-
-try:
-    nltk.data.find("corpora/stopwords")
-except LookupError:
-    nltk.download("stopwords", download_dir=nltk_data_dir)
-
-try:
-    nltk.data.find("corpora/wordnet")
-except LookupError:
-    nltk.download("wordnet", download_dir=nltk_data_dir)
-
-try:
-    nltk.data.find("taggers/averaged_perceptron_tagger")
-except LookupError:
-    nltk.download("averaged_perceptron_tagger", download_dir=nltk_data_dir)
 import pandas as pd
 import seaborn as sns 
 import matplotlib.pyplot as plt
@@ -41,6 +17,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 import joblib
 #nltk.download("averaged_perceptron_tagger")
 nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('punkt_tab')
 nltk.download('omw-1.4')
 nltk.download("stopwords")
 nltk.download("wordnet")
