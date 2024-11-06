@@ -60,6 +60,7 @@ Future Improvements
 -Add more features, such as user feedback, to improve recommendation accuracy.
 
 Contributing
+
 If you would like to contribute, please submit a pull request or open an issue for any improvements, bug fixes, or feature requests.
 
 Author
