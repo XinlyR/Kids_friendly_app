@@ -62,6 +62,9 @@ Future Improvements
 Kid's Friendly App:
 https://kidsfriendlyapp.streamlit.app/
 
+Projet Management:
+https://trello.com/b/SnfNc1p3/final-projet-ironhack
+
 Contributing
 
 If you would like to contribute, please submit a pull request or open an issue for any improvements, bug fixes, or feature requests.
