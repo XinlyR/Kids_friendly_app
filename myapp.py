@@ -491,9 +491,9 @@ elif page == pages[2]:
 
     # Display the interactive Plotly chart in Streamlit with a unique key
     st.plotly_chart(fig, key=f"events_chart_{selected_year}")
-    st.write("In 2023, the trend of family-friendly events shows clear seasonal peaks. Early months, such as January and February, have few events, likely due to colder weather and post-holiday slowdowns. There’s a gradual increase in events around April and May, possibly aligning with spring holidays and outdoor-friendly weather. The sharp rise in October indicates a high concentration of events, potentially connected to school breaks, Halloween, or seasonal festivals.")
-    
-    
+    st.write("In 2024, the peak in October suggests a period with high community engagement, potentially aligned with holidays, cultural celebrations, or seasonal festivals.")
+    st.write("The events continue but decrease toward the year’s end, indicating fewer, but possibly significant, holiday events.")
+    st.write("The months from January to August show limited activity, possibly reflecting a period where fewer public or community events are planned, or seasonal preferences for hosting events later in the year.")
 
 
 
