@@ -315,7 +315,7 @@ elif page == pages[2]:
 
     # Show the figure in Streamlit
     st.plotly_chart(fig)
-    st.write("The graph shows that Restaurant kid-friendly has the most seasonal variability in search interest, likely influenced by periods when families dine out more frequently. Kid's activities have a stable level of interest, while Parks remain consistently low in search frequency, possibly due to ease of access or less need for planning.")    
+    st.write("This graph shows that kid's activities and restaurants experience peaks at specific times, likely related to school breaks and holidays. There’s consistent interest in kid-friendly dining options, highlighting the importance of reliable family dining information. Parks may be perceived as easily accessible, resulting in lower search activity compared to more specific, organized activities.")    
     st.markdown("<br><br>", unsafe_allow_html=True)
     
 
