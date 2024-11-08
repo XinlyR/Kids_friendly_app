@@ -62,6 +62,9 @@ Future Improvements
 Kid's Friendly App:
 https://kidsfriendlyapp.streamlit.app/
 
+Link presentation:
+https://docs.google.com/presentation/d/1n41hoZ4yWSN458Qxi6Nkj3jjA_VpqsKL_glBViapm88/edit#slide=id.gf2c200d473_0_1723
+
 Projet Management:
 https://trello.com/b/SnfNc1p3/final-projet-ironhack
 
