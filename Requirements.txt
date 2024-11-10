@@ -7,4 +7,4 @@ plotly
 Pillow
 scikit-learn
 joblib
-base64
+openpyxl
