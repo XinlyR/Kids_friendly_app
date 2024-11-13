@@ -44,6 +44,7 @@ Project management:
 
 https://trello.com/b/SnfNc1p3/final-projet-ironhack
 
-Contributing If you would like to contribute, please submit a pull request or open an issue for any improvements, bug fixes, or feature requests.
+
+If you would like to contribute, please submit a pull request or open an issue for any improvements, bug fixes, or feature requests.
 
 Author Xinly ROY
