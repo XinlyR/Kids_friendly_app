@@ -545,7 +545,7 @@ elif page == pages[2]:
     fig.update_layout(
         xaxis_title="Arrondissement",
         yaxis_title="Population (2020)",
-        xaxis=dict(type='category'),  # Ensures arrondissements display as categorical data
+        xaxis=dict(type='category'),  
         template="plotly_white"
     )
     fig.update_traces(marker_color='lightskyblue', textposition='outside')  # Optional: color and text position
@@ -766,14 +766,14 @@ elif page == pages[4]:
     st.title("Restaurant Selection in Paris")
     st.write("Choose an arrondissement and a restaurant to see if it's kid-friendly according to two different models.")
 
-    # Step 1: Arrondissement selection (by zip code)
+    # Arrondissement selection (by zip code)
     zip_codes = sorted(data["zip_code"].unique())
     chosen_zip_code = st.selectbox("Select an arrondissement (by zip code):", zip_codes)
 
     # Filter data based on chosen zip code
     filtered_data = data[data["zip_code"] == chosen_zip_code]
 
-    # Step 2: Display restaurants if any are found in the selected zip code
+    # Display restaurants if any are found in the selected zip code
     if not filtered_data.empty:
         # Drop duplicates and create a display name for the selectbox
         restaurant_options = filtered_data[["unique_id", "name"]].drop_duplicates()
@@ -837,7 +837,7 @@ elif page == pages[5]:
     #st.markdown("<br><br>", unsafe_allow_html=True)
     
 
-    # URL de base de l'API
+    # URL API
     api_base_url = "http://127.0.0.1:5000/api"
 
     # Streamlit Interface
@@ -855,7 +855,7 @@ elif page == pages[5]:
     st.markdown('<p class="centered-text">Kids Friendly Data - Download Center</p>', unsafe_allow_html=True)
     st.markdown("***Select a dataset to download:***")
     
-    # Liste des datasets à télécharger
+    # List datasets to download
     datasets = {
             "Detailed Places": "download_detailed_places",
             "Trends 5 Years": "download_trends_5years",
@@ -868,16 +868,16 @@ elif page == pages[5]:
             "KF Places Paris": "download_kf_places_paris"
         }
 
-    # Boucle pour créer un bouton de téléchargement pour chaque dataset
+    # Loop to create a button to download
     for name, endpoint in datasets.items():
-        # Ajouter un bouton de téléchargement
+        # Add a button
         if st.button(f"Download {name}"):
-            # Requête pour télécharger le dataset
+            # Requests
             response = requests.get(f"{api_base_url}/{endpoint}")
             
             if response.status_code == 200:
                 st.success(f"{name} downloaded successfully!")
-                # Télécharger et sauvegarder le fichier
+                # Download and save dataset
                 st.download_button(
                     label=f"Download {name}",
                     data=response.content,
