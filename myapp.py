@@ -838,7 +838,8 @@ elif page == pages[5]:
     
 
     # URL API
-    api_base_url = "http://127.0.0.1:5000/api"
+    api_base_url = "https://myapi-ayrr.onrender.com"
+    #"http://127.0.0.1:5000/api"
 
     # Streamlit Interface
     st.markdown(
