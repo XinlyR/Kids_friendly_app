@@ -9,6 +9,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from PIL import Image
 import base64
+import requests
 from io import BytesIO
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import WordNetLemmatizer
@@ -46,7 +47,7 @@ df_kf_places_paris=pd.read_csv('extra_kfplaces_paris.csv')
 
 st.sidebar.title("Contents")
 
-pages = ["Overview of the projet", "Data Exploration", "Data Analysis","Recommendations", "Machine Learning"]
+pages = ["Overview of the projet", "Data Exploration", "Data Analysis","Recommendations", "Machine Learning","API"]
 
 page = st.sidebar.radio("Go to the page :", pages)
 
@@ -110,6 +111,8 @@ if page == pages[0] :
     st.write("This page offers tailored recommendations for places officially categorized as kid-friendly in Paris, helping you plan outings and activities for your family.")
     st.markdown("***5.	Predictive Model for Non-Categorized Restaurants:***")
     st.write("Using a machine learning NLP model trained on customer reviews, this section predicts whether a restaurant that isn’t officially marked as kid-friendly is likely to offer a welcoming environment for children, giving parents additional dining options.")
+    st.markdown("***6. Data Download Center:***")
+    st.write("This section provides downloadable datasets used in the project, allowing you to explore and analyze key data on kid-friendly locations and trends in Paris.")  
     st.markdown("<br><br>", unsafe_allow_html=True)
     st.write("This app is my final project, created after several weeks of intensive bootcamp in data analysis. I chose this topic because, as a new mother, I know how much parents want to continue enjoying outings while seamlessly incorporating their children. Many parents, especially when visiting a new city, face the challenge of finding places where they and their children will feel welcome.")
     st.write("With this app, I hope to make it a little easier for parents to find child-friendly places in Paris, so you can focus on spending quality time with your family.")
@@ -808,3 +811,77 @@ elif page == pages[4]:
     else:
         st.write("No restaurants found in the selected arrondissement.")
 
+elif page == pages[5]:
+
+    st.markdown(
+        """
+        <style>
+        .centered-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: black;  /* Adjust the color if needed */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        </style>
+        <h1 class="centered-title">API</h1>
+        """,
+        unsafe_allow_html=True
+    ) 
+
+
+    st.write("Welcome to the data download center! Here, you’ll find a variety of datasets that were used to build insights for this project. Each dataset focuses on different aspects of kid-friendly places and activities across Paris, including popular locations, population statistics, events, and trends over time. To make it easy for you to access and explore the data, simply select the dataset you wish to download.")
+    st.write("You can analyze the information, replicate results, or explore new insights about family-friendly places and activities in Paris.")
+    #st.markdown("<br><br>", unsafe_allow_html=True)
+    
+
+    # URL de base de l'API
+    api_base_url = "http://127.0.0.1:5000/api"
+
+    # Streamlit Interface
+    st.markdown(
+    """
+    <style>
+    .centered-text {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True)
+    st.markdown('<p class="centered-text">Kids Friendly Data - Download Center</p>', unsafe_allow_html=True)
+    st.markdown("***Select a dataset to download:***")
+    
+    # Liste des datasets à télécharger
+    datasets = {
+            "Detailed Places": "download_detailed_places",
+            "Trends 5 Years": "download_trends_5years",
+            "Population France": "download_population_france",
+            "Parks with Playground": "download_parks_with_playground",
+            "Events": "download_faire",
+            "Paris Population Data": "download_paris_data",
+            "Trends Comparison": "download_trends_comparison",
+            "General Scores": "download_gral_df_scores",
+            "KF Places Paris": "download_kf_places_paris"
+        }
+
+    # Boucle pour créer un bouton de téléchargement pour chaque dataset
+    for name, endpoint in datasets.items():
+        # Ajouter un bouton de téléchargement
+        if st.button(f"Download {name}"):
+            # Requête pour télécharger le dataset
+            response = requests.get(f"{api_base_url}/{endpoint}")
+            
+            if response.status_code == 200:
+                st.success(f"{name} downloaded successfully!")
+                # Télécharger et sauvegarder le fichier
+                st.download_button(
+                    label=f"Download {name}",
+                    data=response.content,
+                    file_name=f"{name.replace(' ', '_').lower()}.csv",
+                    mime="text/csv"
+                )
+            else:
+                st.error(f"Failed to download {name}. Please try again.")
