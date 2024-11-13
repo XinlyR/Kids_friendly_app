@@ -18,6 +18,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 import joblib
 #nltk.download("averaged_perceptron_tagger")
 nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('punkt_tab')
 nltk.download('omw-1.4')
 nltk.download("stopwords")
 nltk.download("wordnet")
