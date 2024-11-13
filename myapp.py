@@ -838,7 +838,7 @@ elif page == pages[5]:
     
 
     # URL API
-    api_base_url = "https://myapi-ayrr.onrender.com"
+    api_base_url = "https://myapi-ayrr.onrender.com/api"
     #"http://127.0.0.1:5000/api"
 
     # Streamlit Interface
