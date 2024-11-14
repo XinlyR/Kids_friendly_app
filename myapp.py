@@ -28,7 +28,7 @@ nltk.download("punkt")
 
 
 
-df_detailed_places=pd.read_csv('ddetailed_kids_friendly_places_paris_with_reviews.csv')
+df_detailed_places=pd.read_csv('cleaned_ddetailed_kids_friendly_places_paris_with_reviews.csv')
 df_detailed_places=df_detailed_places.drop(columns='Unnamed: 0')
 trends_5years=pd.read_csv('ttrends_kids_friendly_paris_5years.csv')
 trends_5years=trends_5years.drop(columns='Unnamed: 0')
@@ -839,7 +839,7 @@ elif page == pages[5]:
 
     # URL API
     api_base_url = "https://myapi-ayrr.onrender.com/api"
-    #"http://127.0.0.1:5000/api"
+    
 
     # Streamlit Interface
     st.markdown(
