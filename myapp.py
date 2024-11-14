@@ -410,26 +410,26 @@ elif page == pages[2]:
 
     st.markdown("**Distribution of Parks by Zip Code and Type**<br><br>", unsafe_allow_html=True)
     st.write("This stacked bar chart shows the number of parks by postal code and category (like 'Jardin' and 'Square.")
-    df_parks_with_playground['Code postal'] = df_parks_with_playground['Code postal'].astype(str)
+    df_parks_with_playground['zipcode'] = df_parks_with_playground['zipcode'].astype(str)
 
     # Filter out unwanted postal codes if necessary
-    filtered_parks = df_parks_with_playground[df_parks_with_playground["Code postal"] != "94300"]
+    filtered_parks = df_parks_with_playground[df_parks_with_playground["zipcode"] != "94300"]
 
     # Group the data by 'Code postal' and 'Catégorie', and count occurrences
-    park_counts = filtered_parks.groupby(['Code postal', 'Catégorie']).size().unstack(fill_value=0)
+    park_counts = filtered_parks.groupby(['zipcode', 'Catégorie']).size().unstack(fill_value=0)
 
     # Convert the result to a DataFrame for Plotly compatibility
-    park_counts_df = park_counts.reset_index().melt(id_vars='Code postal', var_name='Category', value_name='Count')
+    park_counts_df = park_counts.reset_index().melt(id_vars='zipcode', var_name='Category', value_name='Count')
 
     # Create the stacked bar plot with categorical x-axis
     fig2 = px.bar(
         park_counts_df, 
-        x='Code postal', 
+        x='zipcode', 
         y='Count', 
         color='Category', 
         title="Number of Parks by Zip Code and Category",
         text='Count',
-        category_orders={'Code postal': sorted(park_counts_df['Code postal'].unique())}
+        category_orders={'zipcode': sorted(park_counts_df['zipcode'].unique())}
     )
 
     # Update layout for better readability
@@ -602,7 +602,7 @@ elif page == pages[3]:
         "Events": {
             "data": df_faire,
             "address_field": "Adresse du lieu",
-            "postal_field": "Code postal",
+            "postal_field": "zipcode",
             "name_field": "Titre"
         },
         "Park": {
@@ -715,7 +715,7 @@ elif page == pages[4]:
 
     st.write("In this section, we will recommend restaurants that, although not officially categorized as kid-friendly, are predicted by a machine learning model analyzing customer reviews to be welcoming to children. This ensures you and your family can enjoy a great time together.")
 
-    data["zip_code"] = data["zip_code"].astype(str)
+    data["zipcode"] = data["zipcode"].astype(str)
 
     # Load vectorizers and models
     bow = joblib.load("count_vectorizer.joblib")
@@ -767,11 +767,11 @@ elif page == pages[4]:
     st.write("Choose an arrondissement and a restaurant to see if it's kid-friendly according to two different models.")
 
     # Arrondissement selection (by zip code)
-    zip_codes = sorted(data["zip_code"].unique())
+    zip_codes = sorted(data["zipcode"].unique())
     chosen_zip_code = st.selectbox("Select an arrondissement (by zip code):", zip_codes)
 
     # Filter data based on chosen zip code
-    filtered_data = data[data["zip_code"] == chosen_zip_code]
+    filtered_data = data[data["zipcode"] == chosen_zip_code]
 
     # Display restaurants if any are found in the selected zip code
     if not filtered_data.empty:
