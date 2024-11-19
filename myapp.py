@@ -48,7 +48,7 @@ df_kf_places_paris=pd.read_csv('extra_kfplaces_paris.csv')
 
 st.sidebar.title("Contents")
 
-pages = ["Overview of the projet", "Data Exploration", "Data Analysis","Recommendations", "Machine Learning","API"]
+pages = ["Overview of the project", "Data Exploration", "Data Analysis","Recommendations", "Machine Learning","API"]
 
 page = st.sidebar.radio("Go to the page :", pages)
 
@@ -102,7 +102,7 @@ if page == pages[0] :
    
     st.write("This application is designed to help parents and caregivers discover and explore kid-friendly spots across Paris, whether you're searching for restaurants, parks, events, or other family-friendly places. The app is structured to offer a complete analysis of various locations and activities that are welcoming to children. Here’s a brief overview of what each section provides:")
     
-    st.markdown("***1.	Overview of the projet:***")
+    st.markdown("***1.	Overview of the project:***")
     st.write("This page gives an introduction of the application and its purpose.")
     st.markdown("***2.	Data Exploration:***")
     st.write("In this section, you'll find details about the datasets used for the project, including their sources, allowing transparency in data provenance.")
