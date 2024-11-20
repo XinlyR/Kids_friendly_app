@@ -1,0 +1,17 @@
+flask
+flask-cors
+flask-sqlalchemy
+flask-marshmallow
+pandas
+numpy
+scikit-learn
+joblib
+nltk
+pytrends
+streamlit
+requests
+matplotlib
+plotly
+seaborn
+openpyxl
+sqlalchemy

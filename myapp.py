@@ -219,7 +219,7 @@ elif page == pages[1]:
     if st.checkbox("Show Duplicates", key="duplicates_population_paris") : 
         st.write(df_paris_data.duplicated().sum())
 
-    st.markdown("***4.-Dataset downloaded from the Paris.fr website with information on all squares and parks in Paris. :***")
+    st.markdown("***4.-Dataset downloaded from the Opendata.Paris website with information on all squares and parks in Paris. :***")
     st.dataframe(df_parks_with_playground.head())
     st.write("DataFrame Dimensions :")
     st.write(df_parks_with_playground.shape)
@@ -229,7 +229,7 @@ elif page == pages[1]:
     if st.checkbox("Show Duplicates", key="duplicates_parks") : 
         st.write(df_parks_with_playground.duplicated().sum())
     
-    st.markdown("***5.-Dataset coming from the Google API, showing places classified as kid-friendly on Google :***")
+    st.markdown("***5.-Dataset coming from the Google place API, showing places classified as kid-friendly on Google :***")
     st.dataframe(df_detailed_places.head())
     st.write("DataFrame Dimensions :")
     st.write(df_detailed_places.shape)
@@ -618,6 +618,13 @@ elif page == pages[3]:
             "postal_field": "zip_code",
             "name_field": "name",
             "type_filter": "restaurant"
+        },
+        "Coffee shop": {
+            "data": df_kf_places_paris,
+            "address_field": "vicinity",
+            "postal_field": "zip_code",
+            "name_field": "name",
+            "type_filter": "Coffee shop"
         },
         "Museum": {
             "data": df_kf_places_paris,
